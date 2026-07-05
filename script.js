@@ -11,7 +11,14 @@ const calcButtons = document.querySelectorAll('.calc-button');
 let currentStage = 0;
 const expectedBirthday = '16072007'; // JoJo's birthday in DDMMYYYY format.
 let enteredDigits = '';
+let autoAdvanceTimer = null;
 
+function clearAutoAdvance() {
+  if (autoAdvanceTimer) {
+    clearTimeout(autoAdvanceTimer);
+    autoAdvanceTimer = null;
+  }
+}
 
 function updateCalcDisplay() {
   const padded = enteredDigits.padEnd(8, '*');
@@ -251,7 +258,13 @@ function showStage(stage) {
   if (targetScreen) {
     targetScreen.classList.add('active');
     currentStage = stage;
-    if (stage === 3) {
+    clearAutoAdvance();
+
+    if (stage === 2) {
+      autoAdvanceTimer = setTimeout(() => {
+        showStage(3);
+      }, 3000);
+    } else if (stage === 3) {
       startStageThreeCelebration();
     } else if (stage > 1) {
       triggerConfetti(22);
