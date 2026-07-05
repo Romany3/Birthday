@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -101,3 +102,96 @@
   <script src="script.js"></script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday JoJo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="load-screen" id="loadScreen">
+    <div class="loader-content">
+      <h1 id="loadingText" class="loading-phrase" aria-hidden="true"></h1>
+    </div>
+  </div>
+  <div class="bg-bubbles" id="bgBubbles" aria-hidden="true"></div>
+  <div class="page-container" id="pageContainer">
+    <div class="screen full-screen active" data-stage="1">
+      <div class="screen-content calc-layout">
+        <div class="calc-panel">
+          <div class="calc-header">
+            <h2>Happy Birthday!</h2>
+          </div>
+          <div class="calc-display" id="calcDisplay">**-**-****</div>
+          <div class="calc-message" id="calcMessage">Just type the date and submit.</div>
+          <div class="calc-pad">
+            <button class="calc-button" data-key="1">1</button>
+            <button class="calc-button" data-key="2">2</button>
+            <button class="calc-button" data-key="3">3</button>
+            <button class="calc-button" data-key="4">4</button>
+            <button class="calc-button" data-key="5">5</button>
+            <button class="calc-button" data-key="6">6</button>
+            <button class="calc-button" data-key="7">7</button>
+            <button class="calc-button" data-key="8">8</button>
+            <button class="calc-button" data-key="9">9</button>
+            <button class="calc-button calc-action" data-key="clear">C</button>
+            <button class="calc-button" data-key="0">0</button>
+            <button class="calc-button calc-action" data-key="submit">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen full-screen" data-stage="2">
+      <div class="screen-content hero-layout">
+        <div class="hero-left">
+          <div class="hero-greeting">
+            <h1 class="gradient-text">Happy</h1>
+            <h1 class="gradient-text">Birthday</h1>
+            <h1 class="gradient-text">JoJo!</h1>
+          </div>
+          <div class="emoji-row">
+            <span class="emoji-bounce">click</span>
+            <span class="emoji-bounce" style="animation-delay: 0.1s;">on</span>
+            <span class="emoji-bounce" style="animation-delay: 0.2s;">the</span>
+            <span class="emoji-bounce" style="animation-delay: 0.3s;">screen</span>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="profile-circle">
+            <div class="placeholder-img">Your Photo Here</div>
+          </div>
+        </div>
+        <div class="decor-dots decor-left"></div>
+        <div class="decor-hearts decor-right"></div>
+      </div>
+    </div>
+
+    <div class="screen full-screen" data-stage="3">
+      <div class="screen-content message-layout">
+        <div class="message-card">
+          <h2>A Special Message for You</h2>
+          <div class="message-content" id="messageContent">
+            <p>Write your special birthday message here...</p>
+          </div>
+          <div class="emoji-decoration">
+            <span>🎈</span>
+            <span>💖</span>
+            <span>🌸</span>
+            <span>💝</span>
+            <span>🎊</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="confetti-container" id="confettiContainer"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+>>>>>>> 0c4dc3bffbaf924d849baa515c47cd4c118eaf61
