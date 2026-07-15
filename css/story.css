@@ -253,7 +253,7 @@
   .bubble-1 { top: 12%; left: 5%; margin-bottom: 30px !important; }
   .bubble-2 { top: 14%; right: 5%; margin-bottom: 30px !important; }
   .bubble-3 { bottom: 13%; left: 5%; margin-top: 30px !important; }
-  .bubble-4 { bottom: 11%; right: 5%; margin-top: 30px !important; }
+  .bubble-4 { bottom: 15%; right: 5%; margin-top: 30px !important; }
 }
 
 /* Extra Small Mobile (360px - 430px) */
@@ -261,10 +261,10 @@
   .story-card { width: 88%; padding: 32px 20px; border-radius: 28px; }
   .story-bubble { width: 100px; height: 100px; }
   
-  .bubble-1 { top: 9%; left: 6%; margin-bottom: 30px !important; }
-  .bubble-2 { top: 11%; right: 6%; margin-bottom: 30px !important; }
-  .bubble-3 { bottom: 8%; left: 6%; margin-top: 30px !important; }
-  .bubble-4 { bottom: 9%; right: 6%; margin-top: 30px !important; }
+  .bubble-1 { top: 15%; left: 6%; margin-bottom: 30px !important; }
+  .bubble-2 { top: 17%; right: 6%; margin-bottom: 30px !important; }
+  .bubble-3 { bottom: 14%; left: 6%; margin-top: 30px !important; }
+  .bubble-4 { bottom: 15%; right: 6%; margin-top: 30px !important; }
 }
 
 /* Symmetrical Hugging for 360px-390px */
@@ -273,7 +273,7 @@
   .bubble-1 { top: 12%; left: 6%; margin-bottom: 30px !important; }
   .bubble-2 { top: 15%; right: 6%; margin-bottom: 30px !important; }
   .bubble-3 { bottom: 15%; left: 6%; margin-top: 30px !important; }
-  .bubble-4 { bottom: 11%; right: 6%; margin-top: 30px !important; }
+  .bubble-4 { bottom: 15%; right: 6%; margin-top: 30px !important; }
 }
 
 @media (max-width: 360px) {
