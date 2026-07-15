@@ -1,0 +1,209 @@
+/* 
+   PHASE 5 — Story Screen Cinematic Experience
+   Warm, Elegant, Minimal, Emotional
+*/
+
+.story-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* --- STORY CARD DESIGN --- */
+
+.story-card {
+  max-width: 720px;
+  width: 100%;
+  padding: 56px;
+  border-radius: 34px;
+  background: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+  
+  /* Entrance Animation */
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.screen.active .story-card {
+  animation: storyCardEntrance 700ms cubic-bezier(.22,.61,.36,1) forwards;
+}
+
+.story-card:hover {
+  transform: translateY(-2px);
+}
+
+/* --- ICON BADGE --- */
+
+.story-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 74px;
+  height: 74px;
+  margin: 0 auto 32px;
+  font-size: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFF0F5, #FFD4EA);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 12px 30px rgba(255, 20, 147, 0.12);
+  animation: iconFloat 6s ease-in-out infinite;
+  opacity: 0;
+}
+
+.screen.active .story-icon {
+  animation: iconFloat 6s ease-in-out infinite, fadeIn 600ms ease forwards;
+}
+
+/* --- TITLE --- */
+
+.story-card h2 {
+  font-weight: 700;
+  font-size: clamp(1.8rem, 5vw, 2.2rem);
+  letter-spacing: -1px;
+  margin-bottom: 24px;
+  color: #333;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.screen.active .story-card h2 {
+  animation: fadeSlideUp 650ms cubic-bezier(.22,.61,.36,1) 100ms forwards;
+}
+
+/* --- MESSAGE & TYPEWRITER --- */
+
+.story-text {
+  max-width: 560px;
+  margin: 0 auto 40px;
+  line-height: 1.9;
+  font-size: 1.08rem;
+  color: #555;
+  position: relative;
+  min-height: 4em; /* Prevent layout jump */
+}
+
+/* Quote Effect */
+.story-text::before,
+.story-text::after {
+  content: '"';
+  position: absolute;
+  font-family: serif;
+  font-size: 8rem;
+  opacity: 0.04;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.story-text::before {
+  top: -40px;
+  left: -20px;
+}
+
+.story-text::after {
+  bottom: -80px;
+  right: -20px;
+}
+
+.word-span {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(4px);
+  transform: translateY(4px);
+  transition: opacity 400ms ease, filter 400ms ease, transform 400ms ease;
+  margin-right: 0.25em;
+}
+
+.word-span.visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+/* --- BUTTON --- */
+
+.story-button {
+  opacity: 0;
+  transform: translateY(15px);
+  pointer-events: none; /* Disabled until typing finish */
+}
+
+.story-button.visible {
+  animation: fadeSlideUp 500ms ease forwards;
+  pointer-events: auto;
+}
+
+/* --- BACKGROUND ATMOSPHERE --- */
+
+.story-atmosphere {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.atmosphere-particle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.05;
+  filter: blur(30px);
+  animation: atmosFloat 15s ease-in-out infinite;
+}
+
+/* --- KEYFRAMES --- */
+
+@keyframes storyCardEntrance {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes atmosFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 40px) scale(0.9); }
+}
+
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- ACCESSIBILITY --- */
+
+@media (prefers-reduced-motion: reduce) {
+  .story-card, .story-icon, .story-card h2, .story-button, .atmosphere-particle {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .word-span {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+  }
+}
