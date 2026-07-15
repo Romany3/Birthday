@@ -23,10 +23,7 @@ function initStoryScreen() {
         storyText.appendChild(span);
     });
 
-    // 2. Create Atmosphere
-    createStoryAtmosphere();
-
-    // 3. Listen for Stage Activation
+    // 2. Listen for Stage Activation
     const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
             if (mutation.attributeName === 'class') {
@@ -80,39 +77,6 @@ function startStorySequence() {
             }
         }, delay + (index * interval));
     });
-}
-
-/**
- * Creates soft floating light particles for background atmosphere
- */
-function createStoryAtmosphere() {
-    const storyLayout = document.querySelector('.story-layout');
-    if (!storyLayout || storyLayout.querySelector('.story-atmosphere')) return;
-
-    const atmosphere = document.createElement('div');
-    atmosphere.className = 'story-atmosphere';
-
-    const colors = ['#FFC0CB', '#FFFFFF', '#E6E6FA']; // Pink, White, Lavender
-    
-    for (let i = 0; i < 8; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'atmosphere-particle';
-        
-        const size = Math.random() * 200 + 100 + 'px';
-        particle.style.width = size;
-        particle.style.height = size;
-        
-        particle.style.top = Math.random() * 100 + '%';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        
-        particle.style.animationDelay = (Math.random() * 5) + 's';
-        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-        
-        atmosphere.appendChild(particle);
-    }
-
-    storyLayout.appendChild(atmosphere);
 }
 
 // Event Listeners

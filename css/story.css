@@ -14,6 +14,55 @@
   box-sizing: border-box;
 }
 
+/* --- STORY BUBBLES --- */
+
+.story-bubble {
+  position: absolute;
+  width: clamp(100px, 15vw, 180px);
+  height: clamp(100px, 15vw, 180px);
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, var(--hero-primary, #FF1493), var(--hero-accent, #FFD4EA));
+  box-shadow: 0 10px 30px rgba(255, 20, 147, 0.2);
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 1s ease, transform 1s cubic-bezier(.22,.61,.36,1);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.screen.active .story-bubble {
+  opacity: 1;
+  transform: scale(1);
+  animation: bubbleFloat 8s ease-in-out infinite;
+}
+
+.bubble-img-wrapper {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #fff;
+  background: #fff;
+}
+
+.bubble-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Positioning for the 4 bubbles */
+.bubble-1 { top: 10%; left: 10%; animation-delay: 0s; }
+.bubble-2 { top: 15%; right: 10%; animation-delay: 1s; }
+.bubble-3 { bottom: 15%; left: 8%; animation-delay: 2s; }
+.bubble-4 { bottom: 10%; right: 12%; animation-delay: 0.5s; }
+
+@keyframes bubbleFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
 /* --- STORY CARD DESIGN --- */
 
 .story-card {
@@ -21,7 +70,7 @@
   width: 100%;
   padding: 56px;
   border-radius: 34px;
-  background: rgba(255, 255, 255, 0.68);
+  background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(22px);
   -webkit-backdrop-filter: blur(22px);
   border: 1px solid rgba(255, 255, 255, 0.42);
@@ -82,7 +131,7 @@
   animation: fadeSlideUp 650ms cubic-bezier(.22,.61,.36,1) 100ms forwards;
 }
 
-/* --- MESSAGE & TYPEWRITER --- */
+/* --- MESSAGE --- */
 
 .story-text {
   max-width: 560px;
@@ -91,7 +140,7 @@
   font-size: 1.08rem;
   color: #555;
   position: relative;
-  min-height: 4em; /* Prevent layout jump */
+  min-height: 4em;
 }
 
 /* Quote Effect */
@@ -106,32 +155,10 @@
   pointer-events: none;
 }
 
-.story-text::before {
-  top: -40px;
-  left: -20px;
-}
+.story-text::before { top: -40px; left: -20px; }
+.story-text::after { bottom: -80px; right: -20px; }
 
-.story-text::after {
-  bottom: -80px;
-  right: -20px;
-}
-
-.word-span {
-  display: inline-block;
-  opacity: 0;
-  filter: blur(4px);
-  transform: translateY(4px);
-  transition: opacity 400ms ease, filter 400ms ease, transform 400ms ease;
-  margin-right: 0.25em;
-}
-
-.word-span.visible {
-  opacity: 1;
-  filter: blur(0);
-  transform: translateY(0);
-}
-
-/* --- BUTTON (Matched to Hero Style) --- */
+/* --- BUTTON --- */
 
 .story-button {
   height: 58px;
@@ -152,7 +179,7 @@
   box-sizing: border-box;
   opacity: 0;
   transform: translateY(15px);
-  pointer-events: none; /* Disabled until typing finish */
+  pointer-events: none;
 }
 
 .story-button.visible {
@@ -170,21 +197,23 @@
   transform: translateY(1px) scale(0.98);
 }
 
-/* --- BACKGROUND ATMOSPHERE --- */
+/* --- RESPONSIVE ADJUSTMENTS --- */
 
-.story-atmosphere {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
+@media (max-width: 768px) {
+  .story-card {
+    padding: 32px 24px;
+    width: 90%;
+  }
+  
+  .bubble-1 { top: 5%; left: 5%; width: 80px; height: 80px; }
+  .bubble-2 { top: 8%; right: 5%; width: 90px; height: 90px; }
+  .bubble-3 { bottom: 12%; left: 3%; width: 85px; height: 85px; }
+  .bubble-4 { bottom: 8%; right: 4%; width: 80px; height: 80px; }
 }
 
-.atmosphere-particle {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.05;
-  filter: blur(30px);
-  animation: atmosFloat 15s ease-in-out infinite;
+@media (max-width: 480px) {
+  .story-bubble { display: none; } /* Hide on very small screens to keep UI clean */
+  .story-card { padding: 30px 20px; }
 }
 
 /* --- KEYFRAMES --- */
@@ -205,31 +234,9 @@
   to { opacity: 1; }
 }
 
-@keyframes atmosFloat {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -50px) scale(1.1); }
-  66% { transform: translate(-20px, 40px) scale(0.9); }
-}
-
 @keyframes fadeSlideUp {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-/* --- ACCESSIBILITY --- */
-
-@media (prefers-reduced-motion: reduce) {
-  .story-card, .story-icon, .story-card h2, .story-button, .atmosphere-particle {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
-  .word-span {
-    opacity: 1 !important;
-    filter: none !important;
-    transform: none !important;
   }
 }
