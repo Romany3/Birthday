@@ -14,6 +14,8 @@ const bgBubbles = document.getElementById('bgBubbles');
 const calcDisplay = document.getElementById('calcDisplay');
 const calcMessage = document.getElementById('calcMessage');
 
+const progressContainer = document.getElementById('progressContainerIndicator');
+
 function showStage(stage){
 
     const current=document.querySelector(".screen.active");
@@ -41,12 +43,15 @@ function showStage(stage){
     }
 
     currentStage=stage;
+    updateProgressIndicator(stage);
 
     clearAutoAdvance();
 
     if(stage===4){
 
-        startStageThreeCelebration();
+        setTimeout(() => {
+            startStageThreeCelebration();
+        }, 260);
 
     }else if(stage>1){
 
@@ -61,6 +66,40 @@ function nextStage() {
   if (document.querySelector(`[data-stage="${nextStage}"]`)) {
     showStage(nextStage);
   }
+}
+
+/**
+ * Updates the progress indicator visual state
+ */
+function updateProgressIndicator(stage) {
+    if (!progressContainer) return;
+
+    // Show indicator if it's the first time
+    if (!progressContainer.classList.contains('visible')) {
+        progressContainer.classList.add('visible');
+    }
+
+    const steps = progressContainer.querySelectorAll('.progress-step');
+    const connectors = progressContainer.querySelectorAll('.progress-connector');
+
+    steps.forEach((step, index) => {
+        const stepNum = index + 1;
+        step.classList.remove('current', 'completed');
+        
+        if (stepNum < stage) {
+            step.classList.add('completed');
+        } else if (stepNum === stage) {
+            step.classList.add('current');
+        }
+    });
+
+    connectors.forEach((connector, index) => {
+        const connectorNum = index + 1;
+        connector.classList.remove('completed');
+        if (connectorNum < stage) {
+            connector.classList.add('completed');
+        }
+    });
 }
 
 

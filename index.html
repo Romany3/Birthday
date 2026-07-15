@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday JoJo</title>
+  <title>Happy Birthday JoJ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;700;800&family=Great+Vibes&display=swap" rel="stylesheet" />
@@ -16,6 +16,17 @@
   
 </head>
 <body>
+  <!-- Progress Indicator Container -->
+  <div class="progress-container" id="progressContainerIndicator">
+    <div class="progress-step" data-step="1"></div>
+    <div class="progress-connector" data-connector="1"></div>
+    <div class="progress-step" data-step="2"></div>
+    <div class="progress-connector" data-connector="2"></div>
+    <div class="progress-step" data-step="3"></div>
+    <div class="progress-connector" data-connector="3"></div>
+    <div class="progress-step" data-step="4"></div>
+  </div>
+
   <div class="load-screen" id="loadScreen">
     <div class="loader-content">
       <h1 id="loadingText" class="loading-phrase" aria-hidden="true"></h1>
@@ -74,7 +85,7 @@
               <h1 class="gradient-text">Happy Birthday</h1>
 
               <h1 class="hero-name">
-                  JoJo
+                  JoJ
               </h1>
 
               <p class="hero-subtitle">
@@ -130,13 +141,11 @@
       <div class="screen-content message-layout">
         <div class="celebration-container">
           <div class="fireworks-container"></div>
-          <div class="confetti-cannon-container"></div>
           <div class="balloons-container"></div>
 
           <div class="celebration-card">
-            <p class="sub-greeting">To the amazing</p>
-            <h1 class="main-greeting" id="finalGreeting">Happy Birthday,</h1>
-            <h2 class="recipient-name">JoJo!</h2>
+            <p class="sub-greeting"></p>
+            <h2 class="recipient-name"></h2>
             <div class="celebration-cake-container">
               <div class="celebration-cake">
                 <div class="celebration-plate"></div>
@@ -152,8 +161,8 @@
                 </div>
               </div>
             </div>
-            <p class="final-wish">May your special day be filled with immense joy, laughter, and all the wonderful things life has to offer. Here's to another year of amazing adventures!</p>
-            <p class="signature">With love and best wishes <span class="heart-icon"></span></p>
+            <p class="final-wish"></p>
+            <p class="signature"></p>
           </div>
         </div>
       </div>

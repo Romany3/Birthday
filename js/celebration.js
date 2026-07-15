@@ -70,30 +70,67 @@ function createStageThreeFireworks(count) {
   }
 }
 
+function typeText(element, text, speed, onComplete) {
+  if (!element) {
+    if (typeof onComplete === 'function') onComplete();
+    return;
+  }
+
+  element.textContent = '';
+  element.classList.remove('typed');
+  // We handle display in CSS to allow better layout control (block vs inline-block)
+  element.style.whiteSpace = 'pre-wrap';
+  element.style.borderRight = '2px solid #ff4fa3';
+  element.style.minHeight = '1.4em';
+  element.style.opacity = '1';
+  element.style.visibility = 'visible';
+
+  let index = 0;
+  const typingInterval = setInterval(() => {
+    if (index < text.length) {
+      element.textContent += text.charAt(index);
+      index += 1;
+    } else {
+      clearInterval(typingInterval);
+      element.classList.add('typed');
+      element.style.borderRight = 'none';
+      if (typeof onComplete === 'function') onComplete();
+    }
+  }, speed);
+}
+
 function startStageThreeCelebration() {
   const stageThree = document.querySelector('.screen[data-stage="4"]');
   if (!stageThree) return;
 
   clearStageThreeEffects();
 
-  const finalGreetingElement = stageThree.querySelector('#finalGreeting');
-  if (!finalGreetingElement) return;
+  const subGreetingElement = stageThree.querySelector('.sub-greeting');
+  const recipientNameElement = stageThree.querySelector('.recipient-name');
+  const finalWishElement = stageThree.querySelector('.final-wish');
+  const signatureElement = stageThree.querySelector('.signature');
 
-  const messageGreeting = 'Happy Birthday,';
-  let i = 0;
-  finalGreetingElement.textContent = '';
-  finalGreetingElement.classList.remove('typed');
-  finalGreetingElement.style.borderRight = '3px solid #f0e68c';
+  const subGreetingMessage = 'To the amazing';
+  const recipientNameMessage = 'JoJo';
+  const messageWish = `Wishing you the happiest birthday and many more blessed years with Jesus.
+   May He continue to guide you, protect you, and fill your life with love, happiness, and countless blessings.
+   I hope this year is filled with success, beautiful memories, and exciting opportunities.
+   May your special day be filled with immense joy, laughter, and all the wonderful things life has to offer.
+   Here's to another year of amazing adventures!`;
+  const signatureMessage = 'hope this little gift brings a smile to your face and reminds you how special you are. ⭐✨';
 
-  const typingInterval = setInterval(() => {
-    if (i < messageGreeting.length) {
-      finalGreetingElement.textContent += messageGreeting.charAt(i);
-      i += 1;
-    } else {
-      clearInterval(typingInterval);
-      finalGreetingElement.classList.add('typed');
-    }
-  }, 100);
+  // Sequence the typing
+  typeText(subGreetingElement, subGreetingMessage, 50, () => {
+    typeText(recipientNameElement, recipientNameMessage, 100, () => {
+      setTimeout(() => {
+        typeText(finalWishElement, messageWish, 15, () => {
+          setTimeout(() => {
+            typeText(signatureElement, signatureMessage, 20);
+          }, 500);
+        });
+      }, 500);
+    });
+  });
 
   createStageThreeConfettiCannon(100, 0.5);
   setTimeout(() => createStageThreeConfettiCannon(80, 0.3), 500);

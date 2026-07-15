@@ -79,16 +79,18 @@
     margin-bottom: 24px;
   }
 
-  /* Other sections */
-  .main-greeting { font-size: 2rem; }
-  .recipient-name { font-size: 3.5rem; }
-  .final-wish { font-size: 1rem; }
-  .signature { font-size: 1.5rem; }
-  .celebration-cake { transform: scale(0.8); }
-
-  .message-card {
-    padding: 24px;
+  /* Celebration Section Mobile */
+  .screen[data-stage="4"] .celebration-card {
+    padding: 35px 25px;
+    width: 92%;
+    border-radius: 28px;
   }
+
+  .screen[data-stage="4"] .sub-greeting { font-size: 0.75rem; letter-spacing: 3px; }
+  .screen[data-stage="4"] .recipient-name { font-size: 3.2rem; margin-bottom: 15px; }
+  .screen[data-stage="4"] .final-wish { font-size: 1rem; line-height: 1.6; }
+  .screen[data-stage="4"] .signature { font-size: 1rem; margin-top: 25px; }
+  .screen[data-stage="4"] .celebration-cake-container { transform: scale(0.8); margin: 15px 0; }
 
   /* Calculator Mobile */
   .digit-box {
@@ -112,11 +114,11 @@
   }
   
   .gradient-text {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
   }
   
   .hero-name {
-      font-size: 3.2rem;
+      font-size: 2.8rem;
   }
 
   .story-card {
@@ -124,15 +126,18 @@
   }
 
   .story-text {
-    font-size: 1rem;
-    line-height: 1.7;
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
-  .main-greeting { font-size: 1.8rem; }
-  .recipient-name { font-size: 2.8rem; }
-  .final-wish { font-size: 0.9rem; }
-  .signature { font-size: 1.2rem; }
-  .celebration-cake { transform: scale(0.7); }
+  .screen[data-stage="4"] .celebration-card {
+    padding: 30px 18px;
+  }
+
+  .screen[data-stage="4"] .recipient-name { font-size: 2.6rem; }
+  .screen[data-stage="4"] .final-wish { font-size: 0.95rem; }
+  .screen[data-stage="4"] .signature { font-size: 0.95rem; }
+  .screen[data-stage="4"] .celebration-cake-container { transform: scale(0.7); }
 
   /* Extra small mobile adjustments for calculator if needed */
   .digit-box {

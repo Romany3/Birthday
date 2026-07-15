@@ -295,3 +295,90 @@ button:active {
   0% { transform: translateY(0); }
   100% { transform: translateY(-18px); }
 }
+
+/* PROGRESS INDICATOR */
+.progress-container {
+  position: fixed;
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0;
+  z-index: 1001; /* Above almost everything */
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+
+.progress-container.visible {
+  opacity: 1;
+}
+
+.progress-step {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #D8D8D8;
+  background-color: #FFFFFF;
+  transition: background-color 250ms ease, border-color 250ms ease, box-shadow 250ms ease;
+  position: relative;
+  z-index: 2;
+}
+
+.progress-step.current {
+  border-color: #FF1493;
+  background: linear-gradient(to bottom, #FF69B4, #FF1493);
+  box-shadow: 0 0 16px rgba(255, 20, 147, 0.25);
+  animation: stepActivate 350ms ease forwards;
+}
+
+.progress-step.completed {
+  border-color: #FF1493;
+  background-color: #FF1493;
+}
+
+.progress-connector {
+  width: 44px;
+  height: 2px;
+  background-color: #E5E5E5;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.progress-connector::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #FF69B4;
+  transition: width 300ms ease;
+}
+
+.progress-connector.completed::after {
+  width: 100%;
+}
+
+@keyframes stepActivate {
+  0% { transform: scale(0.9); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+  .progress-container {
+    top: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-step, 
+  .progress-connector::after,
+  .progress-container {
+    transition: none !important;
+    animation: none !important;
+  }
+}

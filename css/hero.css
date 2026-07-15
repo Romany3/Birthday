@@ -308,3 +308,36 @@
   backdrop-filter: blur(10px);
   box-shadow: 0 10px 30px rgba(255, 20, 147, 0.05) !important;
 }
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .hero-layout {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+    padding: 80px 20px 40px;
+    min-height: 100vh;
+    overflow-y: auto;
+  }
+
+  .hero-left {
+    order: 2;
+    align-items: center;
+    flex: none;
+  }
+
+  .hero-right {
+    order: 1;
+    flex: none;
+  }
+
+  .profile-circle {
+    width: 260px;
+    height: 260px;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
