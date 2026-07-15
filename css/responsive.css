@@ -89,6 +89,21 @@
   .message-card {
     padding: 24px;
   }
+
+  /* Calculator Mobile */
+  .digit-box {
+    width: 44px;
+    height: 50px;
+    font-size: 1.3rem;
+    border-radius: 10px;
+  }
+  .calc-display {
+    gap: 4px;
+  }
+  .calc-separator {
+    margin: 0 2px;
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -118,4 +133,18 @@
   .final-wish { font-size: 0.9rem; }
   .signature { font-size: 1.2rem; }
   .celebration-cake { transform: scale(0.7); }
+
+  /* Extra small mobile adjustments for calculator if needed */
+  .digit-box {
+    width: 38px;
+    height: 46px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+  }
+  .calc-display {
+    gap: 3px;
+  }
+  .calc-separator {
+    margin: 0 1px;
+  }
 }
