@@ -1,0 +1,47 @@
+@media (max-width: 768px) {
+  .main-greeting { font-size: 2rem; }
+  .recipient-name { font-size: 3.5rem; }
+  .final-wish { font-size: 1rem; }
+  .signature { font-size: 1.5rem; }
+  .celebration-cake { transform: scale(0.8); }
+  .hero-layout {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .profile-circle {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hero-greeting h1 {
+    font-size: 2.5rem;
+  }
+
+  .emoji-row {
+    gap: 12px;
+    /* adjust badge padding on small screens */
+    gap: 8px;
+  }
+
+  .message-card {
+    padding: 24px;
+  }
+
+  .decor-left{
+    font-size: 2rem;
+    left: 20%;
+  }
+  .decor-right {
+    font-size: 2rem;
+    right: 25%;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-greeting { font-size: 1.8rem; }
+  .recipient-name { font-size: 2.8rem; }
+  .final-wish { font-size: 0.9rem; }
+  .signature { font-size: 1.2rem; }
+  .celebration-cake { transform: scale(0.7); }
+}

@@ -7,7 +7,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;700&family=Great+Vibes&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/story.css" />
+  <link rel="stylesheet" href="css/celebration.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  
 </head>
 <body>
   <div class="load-screen" id="loadScreen">
@@ -17,7 +23,7 @@
   </div>
   <div class="bg-bubbles" id="bgBubbles" aria-hidden="true"></div>
   <div class="page-container" id="pageContainer">
-    <div class="screen full-screen active" data-stage="1">
+    <div class="screen full-screen" data-stage="1">
       <div class="screen-content calc-layout">
         <div class="calc-panel">
           <div class="calc-header">
@@ -47,14 +53,36 @@
       <div class="screen-content hero-layout">
         <div class="hero-left">
           <div class="hero-greeting">
-            <h1 class="gradient-text">Happy</h1>
-            <h1 class="gradient-text">Birthday</h1>
-            <h1 class="gradient-text">JoJo!</h1>
+
+              <span class="hero-badge">
+                  ✨ A Special Day ✨
+              </span>
+
+              <h1 class="gradient-text">Happy Birthday</h1>
+
+              <h1 class="hero-name">
+                  JoJo
+              </h1>
+
+              <p class="hero-subtitle">
+                  Today is all about you.
+              </p>
+
+              <p class="hero-description">
+                  I made this little surprise especially for you.
+                  I hope it brings a smile to your face. ❤️
+              </p>
+
+              <button class="hero-button" id="heroContinue">
+                  Continue ↓
+              </button>
           </div>
         </div>
         <div class="hero-right">
           <div class="profile-circle">
-            <div class="placeholder-img">Your Photo Here</div>
+            <div class="placeholder-img">
+              <img src="img/JOJ Red Dress.jpg" alt="JoJo">
+            </div>
           </div>
         </div>
         <div class="decor-dots decor-left"></div>
@@ -63,6 +91,29 @@
     </div>
 
     <div class="screen full-screen" data-stage="3">
+  <div class="screen-content story-layout">
+
+    <div class="story-card">
+
+      <span class="story-icon">💌</span>
+
+      <h2>Before We Celebrate...</h2>
+
+      <p class="story-text">
+        I just wanted to say that today is a very special day,
+        because someone truly wonderful was born.
+      </p>
+
+      <button class="story-button" id="storyContinue">
+        Open Your Gift 🎁
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+    <div class="screen full-screen" data-stage="4">
       <div class="screen-content message-layout">
         <div class="celebration-container">
           <div class="fireworks-container"></div>
@@ -98,6 +149,15 @@
 
   <div class="confetti-container" id="confettiContainer"></div>
 
-  <script src="script.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/effects.js"></script>
+  <script src="js/loading.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/hero.js"></script>
+  <script src="js/story.js"></script>
+  <script src="js/celebration.js"></script>
+  <script src="js/main.js"></script>
+
 </body>
 </html>
