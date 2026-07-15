@@ -1,12 +1,10 @@
+/* ===============================
+   General Animations
+================================ */
+
 @keyframes confettiFall {
-  0% {
-    transform: translateY(0) rotate(0deg) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh) rotate(720deg) scale(0);
-    opacity: 0;
-  }
+  0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
 }
 
 @keyframes floatUp {
@@ -20,52 +18,13 @@
 }
 
 @keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes pop {
-  0% {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 @keyframes popIn {
@@ -79,16 +38,11 @@
 }
 
 @keyframes loaderDrop {
-  to {
-    transform: translateY(0);
-  }
+  to { transform: translateY(0); }
 }
 
 @keyframes letterDrop {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes pulse {
@@ -103,25 +57,9 @@
   100% { transform: translateY(0) scale(1); }
 }
 
-@keyframes sparkleMove {
-  0% { transform: translate(0,0) scale(0.6); opacity: 1 }
-  100% { transform: translate(var(--dx), var(--dy)) scale(1.2); opacity: 0 }
-}
-
 @keyframes dropLayer {
-  0% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(-200px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-}
-
-@keyframes flicker {
-  0%, 100% { transform: translateX(-50%) translateY(0) scaleY(1); }
-  50% { transform: translateX(-50%) translateY(-2px) scaleY(1.05); }
+  0% { opacity: 0; transform: translateX(-50%) translateY(-200px); }
+  100% { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
 @keyframes flicker {
@@ -137,11 +75,6 @@
   100% { transform: translateY(-120vh) scale(1); opacity: 0; }
 }
 
-@keyframes confettiFall {
-  0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-}
-
 @keyframes launch {
   0% { transform: translateY(0) translateX(0); opacity: 0; }
   10% { opacity: 1; }
@@ -154,92 +87,52 @@
   100% { transform: scale(20); opacity: 0; }
 }
 
-@keyframes floatingProfile{
+/* ===============================
+   Premium Luxury Calculator Animations
+================================ */
 
-    0%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-10px);
-    }
-
-    100%{
-        transform:translateY(0);
-    }
-
+@keyframes calcEntrance {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes profileFloat{
-
-    0%{
-        transform: translateY(0px);
-    }
-
-    50%{
-        transform: translateY(-15px);
-    }
-
-    100%{
-        transform: translateY(0px);
-    }
-
+@keyframes luxuryBoxPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
-@keyframes rotateGlow{
-
-    from{
-        transform:rotate(0deg);
-    }
-
-    to{
-        transform:rotate(360deg);
-    }
-
+@keyframes luxuryShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
 }
 
-@keyframes fadeHero{
-
-    from{
-
-        opacity:0;
-        transform:translateX(-40px);
-
-    }
-
-    to{
-
-        opacity:1;
-        transform:translateX(0);
-
-    }
-
+@keyframes luxurySuccessGlow {
+  0%, 100% { 
+    box-shadow: 0 30px 70px rgba(255, 20, 147, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+  50% { 
+    box-shadow: 0 0 50px rgba(255, 20, 147, 0.4), 0 30px 70px rgba(255, 20, 147, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
 }
 
 /* ===============================
    Screen Transition Animation
 ================================ */
 
-.screen{
-
-    opacity:0;
-    transform:translateX(80px) scale(.98);
-    transition:
-        opacity .6s ease,
-        transform .6s ease;
-
+.screen {
+  opacity: 0;
+  transform: translateX(80px) scale(.98);
+  transition: opacity .6s ease, transform .6s ease;
 }
 
-.screen.active{
-
-    opacity:1;
-    transform:translateX(0) scale(1);
-
+.screen.active {
+  opacity: 1;
+  transform: translateX(0) scale(1);
 }
 
-.screen.exit{
-
-    opacity:0;
-    transform:translateX(-80px) scale(.98);
-
+.screen.exit {
+  opacity: 0;
+  transform: translateX(-80px) scale(.98);
 }

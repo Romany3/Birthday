@@ -23,21 +23,6 @@ function startLoadingScreen(duration = 10000) {
   loadingText.style.justifyContent = "center";
   loadingText.style.gap = "0";
 
-  const revealWindow = Math.max(
-    300,
-    Math.floor(duration * 0.75)
-  );
-
-  // Use Array.from to handle the emoji correctly in the length calculation
-  const line1Chars = Array.from(line1Text);
-  const line2Chars = Array.from(line2Text);
-  const totalLetters = line1Chars.length + line2Chars.length;
-
-  const perDelay =
-    revealWindow / Math.max(totalLetters, 1);
-
-  let globalIndex = 0;
-
   /**
    * Helper to create a line container (span) with specific typography rules
    */
@@ -67,53 +52,70 @@ function startLoadingScreen(duration = 10000) {
   loadingText.appendChild(container1);
   loadingText.appendChild(container2);
 
-  /**
-   * Populates a container with individual animated letter spans
-   */
-  const populateLine = (chars, container) => {
-    chars.forEach((char) => {
-      const span = document.createElement("span");
-      span.className = "loader-letter";
-      span.textContent = char === " " ? "\u00A0" : char;
-      
-      // Keep original animation logic and duration
-      span.style.animationDelay = `${globalIndex * perDelay}ms`;
-      span.style.animationDuration = "420ms,820ms";
-      
-      container.appendChild(span);
-      globalIndex++;
-    });
-  };
+  // Restore Typewriter Cursor
+  const cursor = document.createElement("span");
+  cursor.className = "typing-cursor";
+  cursor.textContent = "|";
 
-  populateLine(line1Chars, container1);
-  populateLine(line2Chars, container2);
+  const charDelay = 40; // Original typewriter feel (35-45ms)
+
+  /**
+   * Types text into a container letter by letter
+   */
+  function typeChars(text, container, callback) {
+    const chars = Array.from(text);
+    let i = 0;
+    container.appendChild(cursor); // Move cursor to the active container
+    
+    function nextChar() {
+      if (i < chars.length) {
+        const span = document.createElement("span");
+        span.className = "loader-letter";
+        span.textContent = chars[i] === " " ? "\u00A0" : chars[i];
+        
+        // Insert letter before the cursor
+        container.insertBefore(span, cursor);
+        i++;
+        setTimeout(nextChar, charDelay);
+      } else if (callback) {
+        callback();
+      }
+    }
+    nextChar();
+  }
+
+  // Sequential typing behavior
+  typeChars(line1Text, container1, () => {
+    // Small pause between sentences exactly as before
+    setTimeout(() => {
+      typeChars(line2Text, container2, () => {
+        // After full sentence finishes, wait 600ms then finish loading
+        setTimeout(() => {
+          finishLoading();
+        }, 600);
+      });
+    }, 400);
+  });
 
   // Sparkles logic remains identical
-  createLoaderSparkles(14, revealWindow);
+  createLoaderSparkles(14, duration * 0.8);
 
-  setTimeout(() => {
-
-    const sparkles =
-      loadingText.querySelectorAll(".sparkle");
-
+  /**
+   * Handles the transition from loading to main app
+   */
+  function finishLoading() {
+    const sparkles = loadingText.querySelectorAll(".sparkle");
     sparkles.forEach((sparkle) => sparkle.remove());
 
     loadScreen.classList.add("hidden");
 
     setTimeout(() => {
-
       if (loadScreen && loadScreen.parentNode) {
-
         loadScreen.parentNode.removeChild(loadScreen);
-
       }
-
+      initializeApp();
     }, 700);
-
-    initializeApp();
-
-  }, duration);
-
+  }
 }
 
 // ================================
