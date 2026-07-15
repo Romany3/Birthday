@@ -1,44 +1,90 @@
+/* RESPONSIVE DESIGN */
+
+/* --- TABLET --- */
+@media (max-width: 1024px) {
+  .hero-layout {
+    gap: 40px;
+    padding: 40px 20px;
+  }
+
+  .profile-circle {
+    width: 280px;
+    height: 280px;
+  }
+
+  .gradient-text {
+    font-size: 3.2rem;
+  }
+
+  .hero-name {
+    font-size: 4rem;
+  }
+}
+
+/* --- MOBILE --- */
 @media (max-width: 768px) {
+  .hero-layout {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    gap: 50px;
+    padding-top: 80px;
+  }
+
+  .hero-left {
+    order: 2;
+    align-items: center;
+  }
+
+  .hero-right {
+    order: 1;
+  }
+
+  .profile-circle {
+    width: 220px;
+    height: 220px;
+  }
+
+  .hero-greeting {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .time-greeting-wrapper {
+    align-items: center;
+  }
+
+  /* Other sections */
   .main-greeting { font-size: 2rem; }
   .recipient-name { font-size: 3.5rem; }
   .final-wish { font-size: 1rem; }
   .signature { font-size: 1.5rem; }
   .celebration-cake { transform: scale(0.8); }
-  .hero-layout {
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  .profile-circle {
-    width: 200px;
-    height: 200px;
-  }
-
-  .hero-greeting h1 {
-    font-size: 2.5rem;
-  }
-
-  .emoji-row {
-    gap: 12px;
-    /* adjust badge padding on small screens */
-    gap: 8px;
-  }
 
   .message-card {
     padding: 24px;
   }
-
-  .decor-left{
-    font-size: 2rem;
-    left: 20%;
-  }
-  .decor-right {
-    font-size: 2rem;
-    right: 25%;
-  }
 }
 
 @media (max-width: 480px) {
+  .hero-layout {
+      padding: 40px 15px;
+  }
+  
+  .gradient-text {
+      font-size: 2.5rem;
+  }
+  
+  .hero-name {
+      font-size: 3.2rem;
+  }
+
   .main-greeting { font-size: 1.8rem; }
   .recipient-name { font-size: 2.8rem; }
   .final-wish { font-size: 0.9rem; }
