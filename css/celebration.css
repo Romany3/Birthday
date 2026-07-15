@@ -348,7 +348,6 @@
 }
 
 .calc-button[data-key="clear"] {
-  grid-column: span 2;
   background: linear-gradient(135deg, #f8d7e4, #f0a8c6);
 }
 

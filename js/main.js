@@ -87,5 +87,5 @@ function initializeApp() {
   startConfettiLoop(600);
 }
 
-// Initialize with loading screen (shortened for better UX)
-startLoadingScreen(2800);
+// Initialize with loading screen - Updated to 22.8s (2.8s + 20s) to give the user more time to read the message.
+startLoadingScreen(5000);
