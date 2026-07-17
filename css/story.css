@@ -150,7 +150,7 @@
   animation: fadeSlideUp 650ms cubic-bezier(.22,.61,.36,1) 100ms forwards;
 }
 
-/* --- MESSAGE --- */
+/* --- MESSAGE & TYPEWRITER --- */
 
 .story-text {
   max-width: 560px;
@@ -159,7 +159,26 @@
   font-size: 1.08rem;
   color: #555;
   position: relative;
-  min-height: 4em;
+  min-height: 4.5em;
+  text-align: center;
+}
+
+.story-char {
+  opacity: 0;
+  display: inline;
+  transition: opacity 0.1s ease;
+}
+
+.story-char.visible {
+  opacity: 1;
+}
+
+.typing-cursor {
+  display: inline-block;
+  color: var(--primary, #FF1493);
+  font-weight: 300;
+  margin-left: 2px;
+  animation: cursorBlink 0.8s infinite;
 }
 
 /* Quote Effect */

@@ -11,17 +11,24 @@ function initStoryScreen() {
     
     if (!storyText || !storyButton) return;
 
-    // 1. Prepare for Typewriter effect (word by word)
-    const originalText = storyText.innerText;
-    const words = originalText.split(/\s+/);
+    // 1. Prepare for Typewriter effect (character by character)
+    const originalText = storyText.textContent.trim();
     storyText.innerHTML = ''; // Clear content
 
-    words.forEach(word => {
+    // Create character spans
+    const chars = Array.from(originalText);
+    chars.forEach(char => {
         const span = document.createElement('span');
-        span.className = 'word-span';
-        span.innerText = word + ' ';
+        span.className = 'story-char';
+        span.textContent = char;
         storyText.appendChild(span);
     });
+
+    // Create a blinking cursor
+    const cursor = document.createElement('span');
+    cursor.className = 'typing-cursor';
+    cursor.textContent = '|';
+    storyText.appendChild(cursor);
 
     // 2. Listen for Stage Activation
     const observer = new MutationObserver((mutations) => {
@@ -47,33 +54,39 @@ function initStoryScreen() {
 }
 
 /**
- * Starts the word-by-word reveal and reveals the button at the end
+ * Starts the character-by-character reveal and reveals the button at the end
  */
 function startStorySequence() {
-    const words = document.querySelectorAll('.word-span');
+    const chars = document.querySelectorAll('.story-char');
     const storyButton = document.getElementById('storyContinue');
+    const cursor = document.querySelector('.typing-cursor');
     
     // Check for prefers-reduced-motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (prefersReducedMotion) {
-        words.forEach(word => word.classList.add('visible'));
+        chars.forEach(char => char.classList.add('visible'));
         storyButton.classList.add('visible');
+        if (cursor) cursor.style.display = 'none';
         return;
     }
 
-    let delay = 600; // Base delay for start (after card entrance)
-    const interval = 55; // 45-60ms as per requirements
+    let delay = 800; // Base delay for start (after card entrance)
+    const interval = 45; // Speed of typing (ms per character)
 
-    words.forEach((word, index) => {
+    chars.forEach((char, index) => {
         setTimeout(() => {
-            word.classList.add('visible');
+            char.classList.add('visible');
             
-            // If it's the last word, show the button
-            if (index === words.length - 1) {
+            // If it's the last character, show the button and hide cursor
+            if (index === chars.length - 1) {
                 setTimeout(() => {
                     storyButton.classList.add('visible');
-                }, 400);
+                    if (cursor) {
+                        cursor.style.opacity = '0';
+                        setTimeout(() => cursor.style.display = 'none', 300);
+                    }
+                }, 500);
             }
         }, delay + (index * interval));
     });
